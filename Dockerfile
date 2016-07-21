@@ -64,6 +64,7 @@ RUN chown snort.snort /var/log/barnyard2
 RUN touch /var/log/snort/barnyard2.waldo
 RUN chown snort.snort /var/log/snort/barnyard2.waldo
 
+# Create the MySQL database
 ADD script /tmp/
 CMD ["/tmp/script"]
 
