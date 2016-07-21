@@ -45,7 +45,7 @@ RUN chown -R snort:snort /usr/local/lib/snort_dynamicrules
 # Copy configuration files
 RUN cd ~/snort_src/snort-2.*/etc/ && cp *.conf* /etc/snort && cp *.map /etc/snort && cp *.dtd /etc/snort && cd ~/snort_src/snort-2.*/src/dynamic-preprocessors/build/usr/local/lib/snort_dynamicpreprocessor/ && cp * /usr/local/lib/snort_dynamicpreprocessor/
 
-ADD snort.conf /etc/snort
+ADD snortconfig/snort.conf /etc/snort
 RUN cd / && snort -T -i eth0 -c /etc/snort/snort.conf
 RUN echo mysql-server mysql-server/root_password password $MYSQLTMPROOT | debconf-set-selections;\
   echo mysql-server mysql-server/root_password_again password $MYSQLTMPROOT | debconf-set-selections;\
@@ -76,3 +76,4 @@ RUN chmod o-r /etc/snort/barnyard2.conf
 RUN apt-get -y install unzip
 RUN cd ~/snort_src/ && wget https://github.com/finchy/pulledpork/archive/patch-3.zip && unzip patch-3.zip && cd pulledpork-patch-3 && cp pulledpork.pl /usr/local/bin/ && chmod +x /usr/local/bin/pulledpork.pl && cp etc/*.conf /etc/snort/
 ADD pulledpork.conf /etc/snort/
+RUN /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l
