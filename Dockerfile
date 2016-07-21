@@ -15,3 +15,7 @@ RUN cd ~/snort_src/ && apt-get install bison flex -y && wget https://www.snort.o
 RUN apt-get install zlib1g-dev liblzma-dev openssl libssl-dev -y
 
 RUN cd ~/snort_src/ && wget https://www.snort.org/downloads/snort/snort-2.9.8.3.tar.gz && tar -zxvf snort-2.*.tar.gz && cd snort-2.* && ./configure --enable-sourcefire && make && make install
+
+RUN ldconfig
+RUN ln -s /usr/local/bin/snort /usr/sbin/snort
+RUN snort -V
