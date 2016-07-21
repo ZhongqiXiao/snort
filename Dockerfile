@@ -58,7 +58,7 @@ RUN ln -s /usr/include/dumbnet.h /usr/include/dnet.h
 RUN ldconfig
 RUN cd ~/snort_src/barnyard2 && ./configure --with-mysql --with-mysql-libraries=/usr/lib/x86_64-linux-gnu && make && make install
 
-RUN cp etc/barnyard2.conf /etc/snort
+RUN cd ~/snort_src/barnyard2 && cp etc/barnyard2.conf /etc/snort
 RUN mkdir /var/log/barnyard2
 RUN chown snort.snort /var/log/barnyard2
 RUN touch /var/log/snort/barnyard2.waldo
