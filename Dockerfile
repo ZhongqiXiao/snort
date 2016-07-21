@@ -46,6 +46,7 @@ RUN cd ~/snort_src/snort-2.*/etc/ && cp *.conf* /etc/snort && cp *.map /etc/snor
 
 ADD snort.conf /etc/snort
 RUN cd / && snort -T -i eth0 -c /etc/snort/snort.conf
-RUN echo 'mysql-server mysql-server-5.7/root_password password your_password' | debconf-set-selections && echo 'mysql-server mysql-server-5.7/root_password_again password Pilote2016' | debconf-set-selections
-RUN apt-get install mysql-server
+RUN echo 'mysql-server mysql-server/root_password password strangehat' | sudo debconf-set-selections
+RUN echo 'mysql-server mysql-server/root_password_again password strangehat' | sudo debconf-set-selections
+RUN apt-get -y install mysql-server
 RUN apt-get install libmysqlclient-dev mysql-client autoconf libtool -y
