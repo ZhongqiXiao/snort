@@ -52,6 +52,7 @@ RUN apt-get -y install mysql-server
 RUN apt-get install libmysqlclient-dev mysql-client autoconf libtool -y
 
 # Download and install Barnyard2
+RUN apt-get -y install git
 RUN cd ~/snort_src/ && git clone git://github.com/firnsy/barnyard2.git && cd barnyard2/ && autoreconf -fvi -I ./m4
 RUN ln -s /usr/include/dumbnet.h /usr/include/dnet.h
 RUN sudo ldconfig
