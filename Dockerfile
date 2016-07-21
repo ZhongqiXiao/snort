@@ -68,3 +68,9 @@ RUN chown snort.snort /var/log/snort/barnyard2.waldo
 ADD script /tmp/
 CMD ["/tmp/script"]
 
+#Configure Barnyard2 to use the MySQL database
+ADD barnyard2.conf /etc/snort
+RUN chmod o-r /etc/snort/barnyard2.conf
+
+
+
