@@ -11,9 +11,8 @@ RUN apt-get -y install ethtool
 RUN apt-get install build-essential -y
 RUN apt-get install libpcap-dev libpcre3-dev libdumbnet-dev -y
 RUN mkdir ~/snort_src
-RUN cd ~/snort_src/
-RUN apt-get install bison flex -y
-RUN wget https://www.snort.org/downloads/snort/daq-2.0.6.tar.gz
-RUN tar -zxvf daq-2.0.6.tar.gz
+RUN cd ~/snort_src/ && apt-get install bison flex -y && wget https://www.snort.org/downloads/snort/daq-2.0.6.tar.gz && tar -zxvf daq-2.0.6.tar.gz
 RUN cd daq-2.0.6/ && ./configure && make && make install
 RUN apt-get install zlib1g-dev liblzma-dev openssl libssl-dev -y
+
+RUN cd ~/snort_src/ && wget https://www.snort.org/downloads/snort/snort-2.9.8.3.tar.gz && tar -zxvf snort-2.*.tar.gz
