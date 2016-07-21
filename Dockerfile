@@ -72,6 +72,4 @@ CMD ["/tmp/script"]
 ADD barnyard2.conf /etc/snort
 RUN chmod o-r /etc/snort/barnyard2.conf
 
-RUN barnyard2 -c /etc/snort/barnyard2.conf -d /var/log/snort -f snort.u2 -w /var/log/snort/barnyard2.waldo -g snort -u snort
-
 
