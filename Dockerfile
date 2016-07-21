@@ -3,7 +3,7 @@ ENV MYSQLTMPROOT Pilote2016
 
 RUN apt-get update
 RUN apt-get -y dist-upgrade
-RUN apt-get -y install openssh-server
+RUN apt-get -y install openssh-server nano
 RUN apt-get -y install ethtool
 # lanch after run privileged
 #RUN ethtool -K eth0 gro off
@@ -73,7 +73,7 @@ ADD barnyard2.conf /etc/snort
 RUN chmod o-r /etc/snort/barnyard2.conf
 
 #
-RUN apt-get -y install unzip
+RUN apt-get install -y libcrypt-ssleay-perl liblwp-useragent-determined-perl unzip
 RUN cd ~/snort_src/ && wget https://github.com/finchy/pulledpork/archive/patch-3.zip && unzip patch-3.zip && cd pulledpork-patch-3 && cp pulledpork.pl /usr/local/bin/ && chmod +x /usr/local/bin/pulledpork.pl && cp etc/*.conf /etc/snort/
 ADD pulledpork.conf /etc/snort/
 RUN /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l
