@@ -18,4 +18,30 @@ RUN cd ~/snort_src/ && wget https://www.snort.org/downloads/snort/snort-2.9.8.3.
 
 RUN ldconfig
 RUN ln -s /usr/local/bin/snort /usr/sbin/snort
-RUN snort -V
+
+RUN groupadd snort
+RUN useradd snort -r -s /sbin/nologin -c SNORT_IDS -g snort
+
+# Create necessary files and folders
+RUN mkdir -p /etc/snort/rules/iplists
+RUN mkdir /etc/snort/preproc_rules
+RUN mkdir /usr/local/lib/snort_dynamicrules
+RUN mkdir /etc/snort/so_rules
+RUN mkdir -p /var/log/snort/archived_logs
+RUN touch /etc/snort/rules/iplists/black_list.rules
+RUN touch /etc/snort/rules/iplists/white_list.rules
+RUN touch /etc/snort/rules/local.rules
+RUN touch /etc/snort/sid-msg.map
+
+# Set permissions in the necessary files and folders
+RUN chmod -R 5775 /etc/snort
+RUN chmod -R 5775 /var/log/snort
+RUN chmod -R 5775 /usr/local/lib/snort_dynamicrules
+RUN chown -R snort:snort /etc/snort
+RUN chown -R snort:snort /var/log/snort
+RUN chown -R snort:snort /usr/local/lib/snort_dynamicrules
+
+# Copy configuration files
+RUN cd ~/snort_src/snort-2.*/etc/ && cp *.conf* /etc/snort && cp *.map /etc/snort && cp *.dtd /etc/snort && cd ~/snort_src/snort-2.*/src/dynamic-preprocessors/build/usr/local/lib/snort_dynamicpreprocessor/ && cp * /usr/local/lib/snort_dynamicpreprocessor/
+
+
