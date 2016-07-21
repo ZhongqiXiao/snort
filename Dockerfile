@@ -46,9 +46,7 @@ RUN cd ~/snort_src/snort-2.*/etc/ && cp *.conf* /etc/snort && cp *.map /etc/snor
 
 ADD snort.conf /etc/snort
 RUN cd / && snort -T -i eth0 -c /etc/snort/snort.conf
-#RUN echo 'mysql-server mysql-server/root_password password strangehat' | debconf-set-selections
-#RUN echo 'mysql-server mysql-server/root_password_again password strangehat' | debconf-set-selections
-#RUN apt-get -y install mysql-server
+RUN echo 'mysql-server mysql-server/root_password password strangehat' | debconf-set-selections && echo 'mysql-server mysql-server/root_password_again password strangehat' | debconf-set-selections && apt-get -y install mysql-server
 RUN apt-get install -y libmysqlclient-dev mysql-client autoconf libtool
 
 # Download and install Barnyard2
