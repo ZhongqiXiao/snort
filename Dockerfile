@@ -74,3 +74,4 @@ RUN chmod o-r /etc/snort/barnyard2.conf
 
 #
 RUN cd ~/snort_src/ && wget https://github.com/finchy/pulledpork/archive/patch-3.zip && unzip patch-3.zip && cd pulledpork-patch-3 && cp pulledpork.pl /usr/local/bin/ && chmod +x /usr/local/bin/pulledpork.pl && cp etc/*.conf /etc/snort/
+ADD pulledpork.conf /etc/snort/
