@@ -15,8 +15,5 @@ RUN cd ~/snort_src/
 RUN apt-get install bison flex -y
 RUN wget https://www.snort.org/downloads/snort/daq-2.0.6.tar.gz
 RUN tar -zxvf daq-2.0.6.tar.gz
-RUN cd daq-2.0.6/
-RUN ./configure
-RUN make
-RUN make install
+RUN cd daq-2.0.6/ && ./configure && make && make install
 RUN apt-get install zlib1g-dev liblzma-dev openssl libssl-dev -y
