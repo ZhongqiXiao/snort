@@ -77,3 +77,4 @@ RUN apt-get install -y libcrypt-ssleay-perl liblwp-useragent-determined-perl unz
 RUN cd ~/snort_src/ && wget https://github.com/finchy/pulledpork/archive/patch-3.zip && unzip patch-3.zip && cd pulledpork-patch-3 && cp pulledpork.pl /usr/local/bin/ && chmod +x /usr/local/bin/pulledpork.pl && cp etc/*.conf /etc/snort/
 ADD pulledpork.conf /etc/snort/
 RUN /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l
+RUN crontab -l > mycron && echo "30 02 * * * /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l" >> mycron && crontab mycron && rm mycron
