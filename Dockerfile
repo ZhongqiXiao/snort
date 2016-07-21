@@ -55,5 +55,5 @@ RUN apt-get install libmysqlclient-dev mysql-client autoconf libtool -y
 RUN apt-get -y install git
 RUN cd ~/snort_src/ && git clone git://github.com/firnsy/barnyard2.git && cd barnyard2/ && autoreconf -fvi -I ./m4
 RUN ln -s /usr/include/dumbnet.h /usr/include/dnet.h
-RUN sudo ldconfig
+RUN ldconfig
 RUN ~/snort_src/barnyard2/ && ./configure --with-mysql --with-mysql-libraries=/usr/lib/x86_64-linux-gnu && make && make install
