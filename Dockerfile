@@ -78,3 +78,18 @@ RUN cd ~/snort_src/ && wget https://github.com/finchy/pulledpork/archive/patch-3
 ADD pulledpork.conf /etc/snort/
 RUN /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l
 RUN crontab -l > mycron && echo "30 02 * * * /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l" >> mycron && crontab mycron && rm mycron
+
+# Web GUI for Snort Snorby
+RUN apt-get install libgdbm-dev libncurses5-dev git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev -y
+RUN apt-get install imagemagick apache2 libyaml-dev libxml2-dev libxslt-dev git libssl-dev -y
+RUN echo "gem: --no-rdoc --no-ri" > ~/.gemrc
+RUN sh -c "echo gem: --no-rdoc --no-ri > /etc/gemrc"
+RUN cd ~/snort_src/ && wget http://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.0.tar.gz && tar -zxvf ruby-2.3.0.tar.gz && cd ruby-2.3.0/ && ./configure && make && make install 
+RUN gem install wkhtmltopdf
+RUN gem install bundler
+RUN gem install rails
+RUN gem install rake --version=11.1.2
+
+RUN cd ~/snort_src/ && git clone git://github.com/Snorby/snorby.git && cp -r snorby/ /var/www/html/ && cd /var/www/html/snorby/ && bundle install
+RUN cp /var/www/html/snorby/config/database.yml.example /var/www/html/snorby/config/database.yml
+
