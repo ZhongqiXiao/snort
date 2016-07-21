@@ -1,0 +1,13 @@
+#!/bin/bash
+
+E_BADARGS=65
+MYSQL=`which mysql`
+  
+Q1="create database snort;"
+Q2="use snort"
+Q3="source ~/snort_src/barnyard2/schemas/create_mysql"
+Q4="CREATE USER 'snort'@'localhost'IDENTIFIED BY 'Pilote2016';"
+Q5="grant create, insert, select, delete, update on snort.* to 'snort'@'localhost';"
+SQL="${Q1}${Q2}${Q3}${Q4}${Q5}"
+  
+$MYSQL -uroot -pPilote2016 -e "$SQL"
