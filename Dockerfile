@@ -56,4 +56,4 @@ RUN apt-get -y install git
 RUN cd ~/snort_src/ && git clone git://github.com/firnsy/barnyard2.git && cd barnyard2/ && autoreconf -fvi -I ./m4
 RUN ln -s /usr/include/dumbnet.h /usr/include/dnet.h
 RUN ldconfig
-RUN ~/snort_src/barnyard2/ && ./configure --with-mysql --with-mysql-libraries=/usr/lib/x86_64-linux-gnu && make && make install
+RUN ~/snort_src/ && cd barnyard2 && ./configure --with-mysql --with-mysql-libraries=/usr/lib/x86_64-linux-gnu && make && make install
