@@ -44,4 +44,5 @@ RUN chown -R snort:snort /usr/local/lib/snort_dynamicrules
 # Copy configuration files
 RUN cd ~/snort_src/snort-2.*/etc/ && cp *.conf* /etc/snort && cp *.map /etc/snort && cp *.dtd /etc/snort && cd ~/snort_src/snort-2.*/src/dynamic-preprocessors/build/usr/local/lib/snort_dynamicpreprocessor/ && cp * /usr/local/lib/snort_dynamicpreprocessor/
 
-
+ADD snort.conf /etc/snort
+RUN snort -T -i eth0 -c /etc/snort/snort.conf
