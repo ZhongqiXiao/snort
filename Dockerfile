@@ -46,3 +46,4 @@ RUN cd ~/snort_src/snort-2.*/etc/ && cp *.conf* /etc/snort && cp *.map /etc/snor
 
 ADD snort.conf /etc/snort
 RUN cd / && snort -T -i eth0 -c /etc/snort/snort.conf
+RUN apt-get install mysql-server libmysqlclient-dev mysql-client autoconf libtool -y
