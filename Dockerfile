@@ -77,7 +77,8 @@ RUN apt-get install -y libcrypt-ssleay-perl liblwp-useragent-determined-perl unz
 RUN cd ~/snort_src/ && wget https://github.com/finchy/pulledpork/archive/patch-3.zip && unzip patch-3.zip && cd pulledpork-patch-3 && cp pulledpork.pl /usr/local/bin/ && chmod +x /usr/local/bin/pulledpork.pl && cp etc/*.conf /etc/snort/
 ADD pulledpork.conf /etc/snort/
 RUN /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l
-RUN crontab -l > mycron && echo "30 02 * * * /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l" >> mycron && crontab mycron && rm mycron
+RUN (crontab -l 2>/dev/null; echo "30 02 * * * /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l") | crontab -
+#RUN crontab -l > mycron && echo "30 02 * * * /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l" >> mycron && crontab mycron && rm mycron
 
 # Web GUI for Snort Snorby
 RUN apt-get install libgdbm-dev libncurses5-dev git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev -y
@@ -92,4 +93,3 @@ RUN gem install rake --version=11.1.2
 
 RUN cd ~/snort_src/ && git clone git://github.com/Snorby/snorby.git && cp -r snorby/ /var/www/html/ && cd /var/www/html/snorby/ && bundle install
 RUN cp /var/www/html/snorby/config/database.yml.example /var/www/html/snorby/config/database.yml
-
