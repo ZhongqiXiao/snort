@@ -113,10 +113,10 @@ RUN apt-get install -y libcurl4-openssl-dev libaprutil1-dev libapr1-dev apache2-
 RUN gem install passenger
 RUN passenger-install-apache2-module --auto
 
-RUN echo 'LoadModule passenger_module /usr/local/rvm/gems/ruby-2.3.0/gems/passenger-5.0.26/buildout/apache2/mod_passenger.so' >> /etc/apache2/mods-available/passenger.load  
-RUN echo 'PassengerRoot /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.0.26' >> /etc/apache2/mods-available/passenger.conf
+RUN echo 'LoadModule passenger_module /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.0.29/buildout/apache2/mod_passenger.so' >> /etc/apache2/mods-available/passenger.load  
+RUN echo 'PassengerRoot /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.0.29' >> /etc/apache2/mods-available/passenger.conf
 RUN echo 'PassengerDefaultRuby /usr/local/bin/ruby' >> /etc/apache2/mods-available/passenger.conf
 RUN a2enmod passenger
-#RUN service apache2 restart
+RUN service apache2 restart
 
 
