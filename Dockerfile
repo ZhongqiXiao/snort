@@ -124,3 +124,4 @@ RUN apache2ctl -t -D DUMP_MODULES
 ADD 001-snorby.conf /etc/apache2/sites-available/
 RUN cd /etc/apache2/sites-available/ && a2ensite 001-snorby.conf && service apache2 restart
 
+RUN cd /etc/apache2/sites-enabled/ && a2dissite 000-default.conf && service apache2 restart
