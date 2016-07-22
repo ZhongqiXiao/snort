@@ -118,7 +118,9 @@ RUN echo 'PassengerRoot /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.0.29' >>
 RUN echo 'PassengerDefaultRuby /usr/local/bin/ruby' >> /etc/apache2/mods-available/passenger.conf
 RUN a2enmod passenger
 RUN service apache2 restart
-
+ # A supp juste une vérification
 RUN apache2ctl -t -D DUMP_MODULES
 
+ADD 001-snorby.conf /etc/apache2/sites-available/
+RUN cd /etc/apache2/sites-available/ && a2ensite 001-snorby.conf && service apache2 restart
 
