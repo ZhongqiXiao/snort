@@ -128,4 +128,3 @@ RUN cd /etc/apache2/sites-enabled/ && a2dissite 000-default.conf && service apac
 
 ADD barnyard2.conf /etc/snort
 RUN chmod o-r /etc/snort/barnyard2.conf
-RUN /usr/local/bin/barnyard2 restart
