@@ -3,7 +3,7 @@ ENV MYSQLTMPROOT Pilote2016
 
 RUN apt-get update
 RUN apt-get -y dist-upgrade
-RUN apt-get -y install openssh-server nano
+RUN apt-get -y install openssh-server nano sudo
 RUN apt-get -y install ethtool
 # lanch after run privileged
 #RUN ethtool -K eth0 gro off
