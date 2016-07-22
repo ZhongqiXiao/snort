@@ -119,4 +119,6 @@ RUN echo 'PassengerDefaultRuby /usr/local/bin/ruby' >> /etc/apache2/mods-availab
 RUN a2enmod passenger
 RUN service apache2 restart
 
+RUN apache2ctl -t -D DUMP_MODULES
+
 
