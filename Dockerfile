@@ -117,6 +117,6 @@ RUN echo 'LoadModule passenger_module /usr/local/rvm/gems/ruby-2.3.0/gems/passen
 RUN echo 'PassengerRoot /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.0.26' >> /etc/apache2/mods-available/passenger.conf
 RUN echo 'PassengerDefaultRuby /usr/local/bin/ruby' >> /etc/apache2/mods-available/passenger.conf
 RUN a2enmod passenger
-RUN service apache2 restart
+#RUN service apache2 restart
 
 
