@@ -100,4 +100,4 @@ RUN cp /var/www/html/snorby/config/snorby_config.yml.example /var/www/html/snorb
 RUN sed -i s/"\/usr\/local\/bin\/wkhtmltopdf"/"\/usr\/bin\/wkhtmltopdf"/g /var/www/html/snorby/config/snorby_config.yml
 
 ADD Gemfile.lock /var/www/html/snorby/
-RUN cd /var/www/html/snorby/ && bundle && service mysql start && mysql_upgrade -u root -pPilote2016 --force && service mysql stop && service mysql start && bundle exec rake snorby:setup
+#RUN cd /var/www/html/snorby/ && bundle && service mysql start && mysql_upgrade -u root -pPilote2016 --force && service mysql stop && service mysql start && bundle exec rake snorby:setup
