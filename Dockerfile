@@ -110,5 +110,5 @@ ADD database.yml /var/www/html/snorby/config/
 
 # 
 RUN apt-get install libcurl4-openssl-dev libaprutil1-dev libapr1-dev apache2-dev
-RUN gem install passenger
+RUN gem install -y passenger
 RUN passenger-install-apache2-module --auto
