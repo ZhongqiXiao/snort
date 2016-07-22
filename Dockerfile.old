@@ -50,6 +50,7 @@ RUN cd / && snort -T -i eth0 -c /etc/snort/snort.conf
 RUN echo mysql-server mysql-server/root_password password $MYSQLTMPROOT | debconf-set-selections;\
   echo mysql-server mysql-server/root_password_again password $MYSQLTMPROOT | debconf-set-selections;\
   apt-get install -y mysql-server libmysqlclient-dev mysql-client autoconf libtool
+RUN usermod -d /var/lib/mysql/ mysql  
 
 # Download and install Barnyard2
 RUN apt-get -y install git
