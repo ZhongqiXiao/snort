@@ -97,3 +97,6 @@ ADD snorby/database.yml /var/www/html/snorby/config/
 
 RUN cp /var/www/html/snorby/config/snorby_config.yml.example /var/www/html/snorby/config/snorby_config.yml
 RUN sed -i s/"\/usr\/local\/bin\/wkhtmltopdf"/"\/usr\/bin\/wkhtmltopdf"/g /var/www/html/snorby/config/snorby_config.yml
+
+ADD Gemfile.lock /var/www/html/snorby/
+RUN bundle exec rake snorby:setup
