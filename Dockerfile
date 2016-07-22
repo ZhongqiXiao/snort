@@ -105,3 +105,5 @@ RUN cd /var/www/html/snorby/ && bundle && service mysql start && mysql_upgrade -
 #
 ADD script2 /tmp/
 RUN service mysql start && /bin/bash /tmp/script2
+
+ADD database.yml /var/www/html/snorby/config/
