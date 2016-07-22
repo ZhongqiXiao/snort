@@ -1,0 +1,11 @@
+#!/bin/bash
+
+E_BADARGS=65
+MYSQL=`which mysql`
+
+Q1="create user 'snorby'@'localhost' IDENTIFIED BY 'Pilote2016';"
+Q2="grant all privileges on snorby.* to 'snorby'@'localhost' with grant option;"
+Q3="flush privileges;"
+SQL="${Q1}${Q2}${Q3}"
+
+$MYSQL -uroot -pPilote2016 -e "$SQL"
