@@ -101,7 +101,7 @@ RUN sed -i s/"\/usr\/local\/bin\/wkhtmltopdf"/"\/usr\/bin\/wkhtmltopdf"/g /var/w
 
 ADD Gemfile.lock /var/www/html/snorby/
 RUN cd /var/www/html/snorby/ && bundle && service mysql start && mysql_upgrade -u root -pPilote2016 --force && service mysql stop; exit 0 
-RUN service mysql start && bundle exec rake snorby:setup
+RUN cd /var/www/html/snorby/ && service mysql start && bundle exec rake snorby:setup
 
 #
 ADD script2 /tmp/
