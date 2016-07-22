@@ -93,3 +93,7 @@ RUN gem install rake --version=11.1.2
 
 RUN cd ~/snort_src/ && git clone git://github.com/Snorby/snorby.git && cp -r snorby/ /var/www/html/ && cd /var/www/html/snorby/ && bundle install
 RUN cp /var/www/html/snorby/config/database.yml.example /var/www/html/snorby/config/database.yml
+ADD snorby/database.yml /var/www/html/snorby/config/
+
+RUN cp /var/www/html/snorby/config/snorby_config.yml.example /var/www/html/snorby/config/snorby_config.yml
+RUN sed -i s/"\/usr\/local\/bin\/wkhtmltopdf"/"\/usr\/bin\/wkhtmltopdf"/g /var/www/html/snorby/config/snorby_config.yml
