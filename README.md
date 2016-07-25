@@ -12,6 +12,16 @@ Clone the git repo and cd into the "root" directory.
   <code>$ git clone https://github.com/amabrouki/snort.git
   $ cd snort</code>
 </pre>
-2- Build the container
 
-3 - todo write a script after running the container to start mysql apache2 snort barnyard sorby ( start also the worker in the Snorby GUI)
+Build the container
+
+<pre>
+  <code>$ docker build -t snort .</code>
+</pre>
+
+<h2>Running the Snort Docker Image</h2>
+ To start Snort and set up port forwarding:
+<pre>
+  <code>$ docker run  --privileged -it -p 3000:3000 -d snort</code>
+</pre>
+
