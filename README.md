@@ -9,6 +9,7 @@ Building the Snort Docker Image
 Clone the git repo and cd into the "root" directory.
 
   $ git clone https://github.com/amabrouki/snort.git
+  $ git clone https://github.com/toffer/docker-squid3-ssl
 
 2- Build the container
 
