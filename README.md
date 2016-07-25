@@ -4,11 +4,13 @@ A simple snort container inspired from this tutorial :
 http://www.ubuntu-howtodoit.com/?p=138
 
 
-Building the Snort Docker Image
+<h2>Building the Snort Docker Image</h2>
 
 Clone the git repo and cd into the "root" directory.
 
-  <code>$ git clone https://github.com/amabrouki/snort.git</code>
+  <code>$ git clone https://github.com/amabrouki/snort.git
+        $ cd snort
+  </code>
   
 2- Build the container
 
