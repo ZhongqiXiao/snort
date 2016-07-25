@@ -8,7 +8,7 @@ Building the Snort Docker Image
 
 Clone the git repo and cd into the "root" directory.
 
-  $ git https://github.com/amabrouki/snort.git
+  $ git clone https://github.com/amabrouki/snort.git
 
 2- Build the container
 
