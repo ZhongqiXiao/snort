@@ -133,4 +133,8 @@ RUN chmod o-r /etc/snort/barnyard2.conf
 # Inclure  les régles 
 ADD snort.conf /etc/snort
 
+ADD run.sh /usr/local/bin/
+RUN chmod 755 /usr/local/bin/run.sh
+
 EXPOSE 3000
+CMD ["/bin/bash","/usr/local/bin/run.sh"]
