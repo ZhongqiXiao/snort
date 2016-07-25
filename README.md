@@ -8,9 +8,8 @@ Building the Snort Docker Image
 
 Clone the git repo and cd into the "root" directory.
 
-  $ git clone https://github.com/amabrouki/snort.git
-  $ git clone https://github.com/toffer/docker-squid3-ssl
-
+  <code>$ git clone https://github.com/amabrouki/snort.git</code>
+  
 2- Build the container
 
 3 - todo write a script after running the container to start mysql apache2 snort barnyard sorby ( start also the worker in the Snorby GUI)
