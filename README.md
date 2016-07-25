@@ -1,8 +1,7 @@
 # Docker container: Snort in Ubuntu 16.04 with Barnyard2, PulledPork and Snorby
-A simple snort container inspired from this tutorial :
-
-http://www.ubuntu-howtodoit.com/?p=138
-
+Snort in a Docker Container
+(Inspired from this tutorial :
+http://www.ubuntu-howtodoit.com/?p=138)
 
 <h2>Building the Snort Docker Image</h2>
 
