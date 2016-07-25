@@ -8,10 +8,10 @@ http://www.ubuntu-howtodoit.com/?p=138
 
 Clone the git repo and cd into the "root" directory.
 
+<pre>
   <code>$ git clone https://github.com/amabrouki/snort.git
-        $ cd snort
-  </code>
-  
+  $ cd snort</code>
+</pre>
 2- Build the container
 
 3 - todo write a script after running the container to start mysql apache2 snort barnyard sorby ( start also the worker in the Snorby GUI)
