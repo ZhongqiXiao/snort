@@ -3,8 +3,10 @@ A simple snort container inspired from this tutorial :
 
 http://www.ubuntu-howtodoit.com/?p=138
 
-1- Clone the repo to your machine
 
-2- Build the container
+Building the Snort Docker Image
+
+Clone the git repo and cd into a directory.
+
 
 3 - todo write a script after running the container to start mysql apache2 snort barnyard sorby ( start also the worker in the Snorby GUI)
