@@ -11,6 +11,8 @@ RUN apt-get -y install ethtool
 #RUN ethtool -k ens160 | grep receive-offload
 RUN apt-get install build-essential -y
 RUN apt-get install libpcap-dev libpcre3-dev libdumbnet-dev -y
+
+# Installation Snort
 RUN mkdir ~/snort_src
 RUN cd ~/snort_src/ && apt-get install bison flex -y && wget https://www.snort.org/downloads/snort/daq-2.0.6.tar.gz && tar -zxvf daq-2.0.6.tar.gz && cd daq-2.0.6/ && ./configure && make && make install
 RUN apt-get install zlib1g-dev liblzma-dev openssl libssl-dev -y
@@ -47,6 +49,8 @@ RUN cd ~/snort_src/snort-2.*/etc/ && cp *.conf* /etc/snort && cp *.map /etc/snor
 
 ADD snortconfig/snort.conf /etc/snort
 RUN cd / && snort -T -i eth0 -c /etc/snort/snort.conf
+
+# Installation MYSQL
 RUN echo mysql-server mysql-server/root_password password $MYSQLTMPROOT | debconf-set-selections;\
   echo mysql-server mysql-server/root_password_again password $MYSQLTMPROOT | debconf-set-selections;\
   apt-get install -y mysql-server libmysqlclient-dev mysql-client autoconf libtool
@@ -65,7 +69,7 @@ RUN chown snort.snort /var/log/barnyard2
 RUN touch /var/log/snort/barnyard2.waldo
 RUN chown snort.snort /var/log/snort/barnyard2.waldo
 
-# Create the MySQL database
+# Create the MySQL database (snort)
 ADD script /tmp/
 RUN service mysql start && /bin/bash /tmp/script
 
@@ -73,7 +77,7 @@ RUN service mysql start && /bin/bash /tmp/script
 ADD barnyard2/barnyard2.conf /etc/snort
 RUN chmod o-r /etc/snort/barnyard2.conf
 
-#
+# Installation pulledpork
 RUN apt-get install -y libcrypt-ssleay-perl liblwp-useragent-determined-perl unzip cron
 RUN cd ~/snort_src/ && wget https://github.com/finchy/pulledpork/archive/patch-3.zip && unzip patch-3.zip && cd pulledpork-patch-3 && cp pulledpork.pl /usr/local/bin/ && chmod +x /usr/local/bin/pulledpork.pl && cp etc/*.conf /etc/snort/
 ADD pulledpork.conf /etc/snort/
@@ -103,7 +107,7 @@ ADD Gemfile.lock /var/www/html/snorby/
 RUN cd /var/www/html/snorby/ && bundle && service mysql start && mysql_upgrade -u root -pPilote2016 --force && service mysql stop; exit 0 
 RUN cd /var/www/html/snorby/ && service mysql start && bundle exec rake snorby:setup
 
-#
+# Create the MySQL database (snorby)
 ADD script2 /tmp/
 RUN service mysql start && /bin/bash /tmp/script2
 
@@ -119,7 +123,8 @@ RUN echo 'PassengerRoot /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.0.29' >>
 RUN echo 'PassengerDefaultRuby /usr/local/bin/ruby' >> /etc/apache2/mods-available/passenger.conf
 RUN a2enmod passenger
 RUN service apache2 restart
- # A supp juste une vérification
+
+# Juste a verfication
 RUN apache2ctl -t -D DUMP_MODULES
 
 ADD 001-snorby.conf /etc/apache2/sites-available/
@@ -130,9 +135,10 @@ RUN cd /etc/apache2/sites-enabled/ && a2dissite 000-default.conf && service apac
 ADD barnyard2.conf /etc/snort
 RUN chmod o-r /etc/snort/barnyard2.conf
 
-# Inclure  les régles 
+# Include snort rules 
 ADD snort.conf /etc/snort
 
+# Script to launch services
 ADD run.sh /usr/local/bin/
 RUN chmod 755 /usr/local/bin/run.sh
 
