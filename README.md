@@ -25,6 +25,7 @@ Build the container
 </pre>
 
 <h2>Passwords</h2>
+<pre>
 "Pilote2016" is the password for MYSQL root, snort and snorby.
 user : snorby@example.com  password :snorby    for snorby GUI 
-
+</pre>
