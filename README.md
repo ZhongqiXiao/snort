@@ -24,3 +24,7 @@ Build the container
   <code>$ docker run  --privileged -it -p 3000:3000 -d snort</code>
 </pre>
 
+<h2>Passwords</h2>
+"Pilote2016" is the password for MYSQL root, snort and snorby.
+user : snorby@example.com  password :snorby    for snorby GUI 
+
