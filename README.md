@@ -34,5 +34,5 @@ Build the container
  <div> - You should always verify that Snort, barnyard and Snorby is running, with this command "ps -a" </div>
  <div> - You should run the "Snorby Worker" from the GUI (Administaration --> Worker & Job Queue) </div>
  <div> - You sould modifiy : </div>
-        <div> the network addresses you are protecting #ipvar HOME_NET any </div>
-        <div> Put your own Oinkcode in the pulledpork.conf </div>
+        <div>&nbsp;&nbsp;&nbsp; the network addresses you are protecting #ipvar HOME_NET any </div>
+        <div>&nbsp;&nbsp;&nbsp; Put your own Oinkcode in the pulledpork.conf </div>
