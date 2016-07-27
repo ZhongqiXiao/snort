@@ -30,5 +30,5 @@ Build the container
 
 <br>
 
-<h3>NB:</h3>
+<h4>NB:</h4>
  <div> You should always verify that Snort, barnyard and Snorby is running, with this command "ps -a" </div>
