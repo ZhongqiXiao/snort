@@ -36,3 +36,4 @@ Build the container
  <div> - You sould modifiy : </div>
         <div>&nbsp;&nbsp;&nbsp; the network addresses you are protecting #ipvar HOME_NET any </div>
         <div>&nbsp;&nbsp;&nbsp; Put your own Oinkcode in the pulledpork.conf </div>
+        <div>&nbsp;&nbsp;&nbsp; The passwords of all components </div>
