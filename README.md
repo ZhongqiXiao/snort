@@ -22,6 +22,8 @@ Build the container
  To start Snort and set up port forwarding:
 <pre>
   <code>$ docker run  --privileged -it -p 3000:3000 -d snort</code>
+  Or
+  <code> docker run  --privileged -it --net=host -d snort</code>
 </pre>
 
 <h2>Passwords</h2>
