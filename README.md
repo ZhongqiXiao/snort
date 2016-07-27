@@ -31,4 +31,4 @@ Build the container
 <br>
 
 NB:
-You should always verify that Snort, barnyard and Snorby is running, with this command "ps -a"
+ <div> You should always verify that Snort, barnyard and Snorby is running, with this command "ps -a" </div>
