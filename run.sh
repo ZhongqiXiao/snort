@@ -4,7 +4,7 @@ service mysql start
 service apache2 start
 
 # run snort
-/usr/local/bin/snort -q -u snort -g snort -c /etc/snort/snort.conf -i eth0 &
+/usr/local/bin/snort -q -u snort -g snort -c /etc/snort/snort.conf -i enp0s8 &
 
 # run snorby
 cd /var/www/html/snorby/ && bundle exec rails server -e production &
