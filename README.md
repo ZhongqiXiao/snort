@@ -27,3 +27,7 @@ Build the container
 <h2>Passwords</h2>
 <div>"Pilote2016" is the password for MYSQL root, snort and snorby. </div>
 <div>  user : snorby@example.com  password :snorby    for snorby GUI </div>
+
+
+NB:
+You should alaways verify that Snort, barnyard and Snorby run with this command "ps -a"
