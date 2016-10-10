@@ -13,7 +13,10 @@ Clone the git repo and cd into the "root" directory.
 </pre>
 
 Build the container
-
+ <pre>
+ <div> - You need to create an account in https://www.snort.org in order to get an Oinkcode.This will allow you to download the regular rules and documentation. This Oinkcode must be kept safe. Once we have the Oinkcode replace every instance of oinkcode> with the your own Oinkcode </div>
+ </pre>
+ 
 <pre>
   <code>$ docker build -t snort .</code>
 </pre>
@@ -37,4 +40,4 @@ Build the container
  <div> - You should always verify that Snort, barnyard and Snorby is running, with this command "ps -a" </div>
  <div> - You should run the "Snorby Worker" from the GUI (Administaration --> Worker & Job Queue) </div>
  <div> - You sould modify the network addresses you are protecting #ipvar HOME_NET any and the passwords of all components</div>
- <div> - You need to create an account in https://www.snort.org in order to get an Oinkcode.This will allow you to download the regular rules and documentation. This Oinkcode must be kept safe. Once we have the Oinkcode replace every instance of oinkcode> with the your own Oinkcode </div>
+
