@@ -14,7 +14,7 @@ Clone the git repo and cd into the "root" directory.
 
 Build the container
 
- <div> - You need to create an account in https://www.snort.org in order to get an Oinkcode.This will allow you to download the regular rules and documentation. This Oinkcode must be kept safe. Once we have the Oinkcode replace every instance of oinkcode> with the your own Oinkcode </div>
+ <div> - You need to create an account in https://www.snort.org in order to get an Oinkcode.This will allow you to download the regular rules and documentation. This Oinkcode must be kept safe. Once we have the Oinkcode replace every instance of &lt;oinkcode&gt; with your own Oinkcode </div>
 
  
 <pre>
