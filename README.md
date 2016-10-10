@@ -13,9 +13,9 @@ Clone the git repo and cd into the "root" directory.
 </pre>
 
 Build the container
- <pre>
+
  <div> - You need to create an account in https://www.snort.org in order to get an Oinkcode.This will allow you to download the regular rules and documentation. This Oinkcode must be kept safe. Once we have the Oinkcode replace every instance of oinkcode> with the your own Oinkcode </div>
- </pre>
+
  
 <pre>
   <code>$ docker build -t snort .</code>
