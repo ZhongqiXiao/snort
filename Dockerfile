@@ -86,11 +86,11 @@ RUN (crontab -l 2>/dev/null; echo "30 02 * * * /usr/local/bin/pulledpork.pl -c /
 #RUN crontab -l > mycron && echo "30 02 * * * /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l" >> mycron && crontab mycron && rm mycron
 
 # Web GUI for Snort Snorby
-RUN apt-get install libgdbm-dev libncurses5-dev git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev -y
+RUN apt-get install libgdbm-dev libncurses5-dev git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev postgresql-server-dev-9.5 libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev -y
 RUN apt-get install imagemagick apache2 libyaml-dev libxml2-dev libxslt-dev git libssl-dev -y
 RUN echo "gem: --no-rdoc --no-ri" > ~/.gemrc
 RUN sh -c "echo gem: --no-rdoc --no-ri > /etc/gemrc"
-RUN cd ~/snort_src/ && wget http://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.0.tar.gz && tar -zxvf ruby-2.3.0.tar.gz && cd ruby-2.3.0/ && ./configure && make && make install 
+RUN cd ~/snort_src/ &&  wget http://cache.ruby-lang.org/pub/ruby/ruby-2.3-stable.tar.gz && tar -zxvf ruby-2.3-stable.tar.gz && cd ruby-2.3.1/ && ./configure && make && make install 
 RUN gem install wkhtmltopdf
 RUN gem install bundler
 RUN gem install rails
@@ -102,6 +102,11 @@ ADD snorby/database.yml /var/www/html/snorby/config/
 
 RUN cp /var/www/html/snorby/config/snorby_config.yml.example /var/www/html/snorby/config/snorby_config.yml
 RUN sed -i s/"\/usr\/local\/bin\/wkhtmltopdf"/"\/usr\/bin\/wkhtmltopdf"/g /var/www/html/snorby/config/snorby_config.yml
+
+RUN sed -i 's/\(^.*\)\(Mime::Type.register.*application\/pdf.*$\)/\1if Mime::Type.lookup_by_extension(:pdf) != "application\/pdf"\n\1  \2\n\1end/' /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-3.2.22/lib/action_dispatch/http/mime_types.rb
+RUN sed -i 's/\(^.*\)\(Mime::Type.register.*application\/pdf.*$\)/\1if Mime::Type.lookup_by_extension(:pdf) != "application\/pdf"\n\1  \2\n\1end/' /usr/local/lib/ruby/gems/2.3.0/bundler/gems/ezprint-*/lib/ezprint/railtie.rb
+RUN sed -i 's/\(^.*\)\(Mime::Type.register.*application\/pdf.*$\)/\1if Mime::Type.lookup_by_extension(:pdf) != "application\/pdf"\n\1  \2\n\1end/' /usr/local/lib/ruby/gems/2.3.0/gems/railties-*/guides/source/action_controller_overview.textile
+
 
 ADD Gemfile.lock /var/www/html/snorby/
 RUN cd /var/www/html/snorby/ && bundle && service mysql start && mysql_upgrade -u root -pPilote2016 --force && service mysql stop; exit 0 
@@ -118,8 +123,8 @@ RUN apt-get install -y libcurl4-openssl-dev libaprutil1-dev libapr1-dev apache2-
 RUN gem install passenger
 RUN passenger-install-apache2-module --auto
 
-RUN echo 'LoadModule passenger_module /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.0.29/buildout/apache2/mod_passenger.so' >> /etc/apache2/mods-available/passenger.load  
-RUN echo 'PassengerRoot /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.0.29' >> /etc/apache2/mods-available/passenger.conf
+RUN echo 'LoadModule passenger_module /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.0.30/buildout/apache2/mod_passenger.so' >> /etc/apache2/mods-available/passenger.load  
+RUN echo 'PassengerRoot /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.0.30' >> /etc/apache2/mods-available/passenger.conf
 RUN echo 'PassengerDefaultRuby /usr/local/bin/ruby' >> /etc/apache2/mods-available/passenger.conf
 RUN a2enmod passenger
 RUN service apache2 restart
