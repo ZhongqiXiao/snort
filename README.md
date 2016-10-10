@@ -38,6 +38,7 @@ Build the container
  <div> - You should run the "Snorby Worker" from the GUI (Administaration --> Worker & Job Queue) </div>
  <div> - You sould modify : </div>
         <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the network addresses you are protecting #ipvar HOME_NET any </div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You need to create an account in https://www.snort.org in order to get an </div>          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Oinkcode. This will allow you to download the regular rules and  </div>                   <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; documentation. This Oinkcode must be kept safe. Once we have the Oinkcode </div> 
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; replace every instance of <oinkcode> with the your own Oinkcode </div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You need to create an account in https://www.snort.org in order to get an Oinkcode </div>        
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This will allow you to download the regular rules and documentation </div>           <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This Oinkcode must be kept safe. Once we have the Oinkcode </div> 
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; replace every instance of oinkcode> with the your own Oinkcode </div>
         <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The passwords of all components </div>
