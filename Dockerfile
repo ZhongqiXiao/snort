@@ -137,7 +137,7 @@ RUN cd /etc/apache2/sites-available/ && a2ensite 001-snorby.conf && service apac
 
 RUN cd /etc/apache2/sites-enabled/ && a2dissite 000-default.conf && service apache2 restart
 
-ADD barnyard2.conf /etc/snort
+ADD barnyard2/barnyard2.conf /etc/snort
 RUN chmod o-r /etc/snort/barnyard2.conf
 
 # Include snort rules 
