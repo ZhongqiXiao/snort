@@ -14,9 +14,7 @@ Clone the git repo and cd into the "root" directory.
 
 Build the container
 
- <div> p {
-    color: red !important;
-} - You need to create an account in https://www.snort.org in order to get an Oinkcode.This will allow you to download the regular rules and documentation. This Oinkcode must be kept safe. Once you have the Oinkcode replace every instance of &lt;oinkcode&gt; in pulledpork.conf with your own Oinkcode 
+ <div> ! - You need to create an account in https://www.snort.org in order to get an Oinkcode.This will allow you to download the regular rules and documentation. This Oinkcode must be kept safe. Once you have the Oinkcode replace every instance of &lt;oinkcode&gt; in pulledpork.conf with your own Oinkcode 
 <br>
 <br>
 <a href="url">https://snort.org/documents/how-to-find-and-use-your-oinkcode</a>
