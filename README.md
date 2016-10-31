@@ -30,12 +30,10 @@ Build the container
 <h2>Running the Snort Docker Image</h2>
  To start Snort and set up port forwarding:
 <pre>
-  <code>$ docker run  --privileged -it -p 3000:3000 -d snort</code>
-  
+  <code>$ docker run  --privileged -it -p 3000:3000 -d snort</code>  
   If you don't know how to redirect traffic to docker interface, this command allow the container a full <p>
   access to host  network interfaces, but you have to change the name of network interface from run.sh   <p>
   script (eth0 to your name interface)
-  
   <code>$ docker run  --privileged -it --net=host -d snort</code>
   
 </pre>
