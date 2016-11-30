@@ -82,8 +82,8 @@ RUN apt-get install -y libcrypt-ssleay-perl liblwp-useragent-determined-perl unz
 RUN cd ~/snort_src/ && wget https://github.com/finchy/pulledpork/archive/patch-3.zip && unzip patch-3.zip && cd pulledpork-patch-3 && cp pulledpork.pl /usr/local/bin/ && chmod +x /usr/local/bin/pulledpork.pl && cp etc/*.conf /etc/snort/
 ADD pulledpork.conf /etc/snort/
 RUN /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l
-RUN (crontab -l 2>/dev/null; echo "30 02 * * * /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l") | crontab -
-#RUN crontab -l > mycron && echo "30 02 * * * /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l" >> mycron && crontab mycron && rm mycron
+#RUN (crontab -l 2>/dev/null; echo "30 02 * * * /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l") | crontab -
+RUN (crontab -l 2>/dev/null; echo "30 02 * * * kill $(pidof snort) && /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l && /usr/local/bin/snort -q -u snort -g snort -c /etc/snort/snort.conf -i em2") | crontab -
 
 # Web GUI for Snort Snorby
 RUN apt-get install libgdbm-dev libncurses5-dev git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev postgresql-server-dev-9.5 libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev -y
